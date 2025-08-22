@@ -1,0 +1,675 @@
+.trains-page {
+    padding-top: 95px;
+}
+
+.trains-content {
+    display: flex;
+    gap: 85px;
+}
+
+aside {
+    max-width: 364px;
+}
+
+.tripDetails {
+    background-color: #3E3C41;
+}
+
+.filter-section {
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.filter-section-container {
+    padding: 43px 35px 33px 28px;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.filter-section h3 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.date-input-container {
+    position: relative;
+}
+
+.date-input-container:nth-of-type(1) {
+    margin-bottom: 30px;
+}
+
+.date-input-container input {
+    min-width: 295px;
+    max-width: 295px;
+    min-height: 43px;
+    max-height: 43px;
+    border: none;
+    outline: none;
+    padding: 11px 20px 11px 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.date-input-container input::placeholder {
+    color: #e5e5e5;
+}
+
+.date-input-container img {
+    position: absolute;
+    top: 32px;
+    right: 10px;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.checkbox-group {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 25px 34px 21px 61px;
+}
+
+/* filter */
+
+.filter {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filter img {
+    margin-right: 35px;
+    width: 24px;
+    height: 24px;
+}
+
+.filter span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.switch {
+    margin-left: auto;
+    display: inline-block;
+    position: relative;
+    width: 72px;
+    height: 19px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.switch__control {
+    opacity: 1;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #fff;
+    outline: none;
+}
+
+.switch__toggle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #C4C4C4;
+    transition: .2s linear;
+    cursor: pointer;
+}
+
+.switch__control:checked+.switch__toggle {
+    left: 45px;
+    background: #FFA800;
+}
+
+.switch__control:checked {
+    background: #FCDC9D;
+}
+
+/* price */
+
+.filter-section.cost {
+    padding: 35px;
+}
+
+.price-range {
+    position: relative;
+}
+
+.price-slider {
+    position: relative;
+    height: 24px;
+    margin: 7px 0;
+}
+
+.price-slider .track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 19px;
+    background: transparent;
+    border-radius: 12px;
+    border: 1px solid #c4c4c4;
+}
+
+.price-slider .range {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 19px;
+    background: #FFA800;
+    border-radius: 12px;
+    outline: none;
+}
+
+.range-input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    /* перекрываем клики треку */
+}
+
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    /* возвращаем клики на кружок */
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.range-input::-moz-range-thumb {
+    pointer-events: auto;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.range-block {
+    display: flex;
+    justify-content: space-between;
+    color: #E5E5E5;
+}
+
+.range-block.white {
+    color: #fff;
+    margin-top: 10px;
+    padding: 0 5px;
+}
+
+/* directions */
+
+.direction-content {
+    padding: 35px;
+}
+
+.direction-content-header {
+    display: flex;
+    align-items: center;
+}
+
+.direction-content-header img {
+    width: 32px;
+    height: 26px;
+    margin-right: 12px;
+}
+
+.direction-content-header h3 {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.plus {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+    transition: .2s linear;
+}
+
+.plus::after,
+.plus::before {
+    content: '';
+    width: 2px;
+    height: 16px;
+    display: block;
+    background-color: #fff;
+    border-radius: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .2s ease;
+}
+
+.plus::before {
+    rotate: 270deg;
+    top: 1px;
+    left: 17px;
+}
+
+.plus:hover {
+    border-color: #FCDC9D;
+}
+
+.plus:hover::after {
+    background-color: #FCDC9D;
+}
+
+.plus:hover::before {
+    background-color: #FCDC9D;
+}
+
+
+.plus.active {
+    border-color: #C4C4C4;
+}
+
+.plus.active::before {
+    background-color: #C4C4C4;
+}
+
+.plus.active::after {
+    opacity: 0;
+}
+
+
+.direction-content.fromCity {
+    border-top: 1px solid #E5E5E5;
+}
+
+.direction-content.fromCity .direction-content-header img {
+    transform: rotate(180deg);
+}
+
+.direction-inner {
+    opacity: 0;
+    height: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.direction-inner.show {
+    opacity: 1;
+    height: auto;
+}
+
+.direction-inner.show .inputs {
+    display: flex;
+}
+
+.inputs {
+    display: none;
+    flex-direction: column;
+    gap: 45px;
+    margin-top: 20px;
+    color: #E5E5E5;
+}
+
+.from>.div,
+.to>.div {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.to>.div {
+    text-align: right;
+}
+
+
+.inputs .range-wrapper {
+    position: relative;
+    height: 18px;
+}
+
+.inputs .track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 6px;
+    background: #C4C4C4;
+    border-radius: 6px;
+}
+
+.inputs .range {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 6px;
+    background: #FFA800;
+    border-radius: 6px;
+}
+
+.inputs .range-input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    appearance: none;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+}
+
+.inputs .range-input::-webkit-slider-thumb {
+    appearance: none;
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border: 2px solid #FFA800;
+    border-radius: 50%;
+}
+
+.inputs .block-time {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+
+/* last-tickets */
+
+.last-tickets {
+    margin-top: 94px;
+}
+
+.last-tickets h3 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    list-style: none;
+}
+
+.tickets-list li {
+    background-color: #fff;
+    padding: 18px 12px 8px 18px;
+    border: 1px solid #C4C4C4;
+}
+
+.listTicket-header {
+    padding-right: 6px;
+    margin-bottom: 40px;
+}
+
+.fromToCity {
+    display: flex;
+    justify-content: space-between;
+    color: #292929;
+}
+
+.fromToCity span {
+    font-weight: 400;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.railway-station {
+    display: flex;
+    justify-content: space-between;
+}
+
+.railway-station span {
+    color: #928F94;
+    font-size: 16px;
+    font-weight: 400;
+    max-width: 105px;
+}
+
+.railway-station span:nth-of-type(2) {
+    text-align: right;
+}
+
+.listTicket-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    gap: 18px;
+}
+
+.icons img {
+    width: 20px;
+    height: 20px;
+}
+
+.prices div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.prices .ot {
+    position: relative;
+    top: 5px;
+    color: #928F94;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.price {
+    color: #FFA800;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.ruble {
+    color: #928F94;
+    font-size: 36px;
+}
+
+
+/* loading-progress */
+
+.loading-progress {
+    width: 100%;
+    min-height: 775px;
+    position: relative;
+}
+
+.loading-progress .progress-container {
+    width: 100%;
+    background: #3E3C41;
+}
+
+.loading-progress .progress-bar {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: #C4C4C4;
+}
+
+.loading-progress .progress-fill {
+    height: 100%;
+    background: #FFA800;
+    transition: width .2s ease;
+}
+
+.progress-content {
+    margin: auto;
+}
+
+.loading-progress .progress-text {
+    color: #928F94;
+    font-weight: 700;
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 100px;
+}
+
+.loading-progress iframe {
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* results */
+
+.tickets {
+    width: 100%;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.results-info span {
+    color: #928F94;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.results-controls {
+    display: flex;
+    gap: 50px;
+}
+
+.sort-controls,
+.limit-controls {
+    color: #928F94;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    margin-top: 47px;
+    margin-bottom: 142px;
+}
+
+.route-card {
+    background-color: #fff;
+    border: 1px solid #c4c4c4;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+}
+
+.route-header {
+    display: flex;
+}
+
+.route-time {
+    border-right: 1px dashed #E5E5E5;
+    display: flex;
+    gap: 35px;
+    padding: 54px 36px 80px 40px;
+    min-width: 440px;
+}
+
+.train-info {
+    background-color: #E4E0E9;
+    padding: 58px 18px 92px 26px;
+    min-width: 153px;
+}
+
+.train-img {
+    width: 86px;
+    height: 86px;
+    margin-bottom: 17px;
+}
+
+.train-number {
+    color: #3E3C41;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.train-direction {
+    font-size: 18px;
+    font-weight: 400;
+    color: #292929;
+    text-transform: capitalize;
+}
+
+.travel-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.travel-info div {
+    color: #c4c4c4;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.travel-info img {
+    width: 30px;
+    height: 20px;
+}
+
+.time-train {
+    color: #000;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.city-name-train {
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+
+}
+
+.railway-station-name {
+    color: #928F94;
+    font-size: 16px;
+    font-weight: 400;
+}

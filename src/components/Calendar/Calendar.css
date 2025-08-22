@@ -1,0 +1,182 @@
+.calendar-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    max-width: 352px;
+    max-height: 302px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+/* Стрелка вверх */
+.calendar-popup::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+}
+
+/* Заголовок календаря */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    border-bottom: 1px solid #E5E5E5;
+    background: #fff;
+}
+
+.calendar-month {
+    font-size: 28px;
+    font-weight: 500;
+    color: #000;
+    margin: 0;
+    text-align: center;
+}
+
+/* Кнопки навигации */
+.calendar-nav-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.calendar-nav-btn:hover {
+    background-color: #F5F5F5;
+}
+
+.calendar-nav-btn:active {
+    background-color: #E0E0E0;
+}
+
+/* Сетка календаря */
+.calendar-grid {
+    padding: 16px 24px 24px;
+}
+
+/* Дни недели */
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.weekday {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+    padding: 8px 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Даты */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.calendar-day:hover:not(:disabled) {
+    background-color: #F5F5F5;
+}
+
+.calendar-day:active:not(:disabled) {
+    background-color: #E0E0E0;
+}
+
+/* Дни других месяцев */
+.calendar-day.other-month {
+    color: #999;
+    cursor: default;
+}
+
+.calendar-day.other-month:hover {
+    background-color: transparent;
+}
+/* Выбранная дата */
+.calendar-day.selected {
+    background-color: #FFA800;
+    color: #fff;
+    font-weight: 600;
+}
+
+.calendar-day.selected:hover {
+    background-color: #E69500;
+}
+
+/* Сегодняшняя дата */
+.calendar-day.today {
+    border: 2px solid #FFA800;
+    font-weight: 600;
+}
+
+.calendar-day.today.selected {
+    border-color: #fff;
+}
+
+/* Отключенные дни */
+.calendar-day:disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .calendar-popup {
+        width: 320px;
+        left: -20px;
+    }
+
+    .calendar-header {
+        padding: 16px 20px;
+    }
+
+    .calendar-grid {
+        padding: 12px 20px 20px;
+    }
+
+    .calendar-day {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,31 @@
+.about {
+    padding-top: 124px;
+    padding-left: 13%;
+}
+
+.about h2 {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.about-content {
+    border-left: 9px solid #FFA800;
+    margin-top: 30px;
+    max-width: 1150px;
+}
+
+.about-content p {
+    font-size: 24px;
+    color: #292929;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.about-content p.black {
+    color: #000;
+    font-weight: 700;
+}
