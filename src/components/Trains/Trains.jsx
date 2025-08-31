@@ -1,33 +1,31 @@
-import LoadingProgress from './LoadingProgress';
+import LoadingProgress from './LoadingProgress'; // Вернули импорт
+import { useState } from 'react';
 import Aside from './Aside/Aside';
 import Tickets from './Tickets/Tickets';
 import './trains.css';
 import { useSearchForm } from '../../context/SearchFormContext';
 
 export default function Trains() {
-    const { isSearching, searchProgress } = useSearchForm();
+    const [loading, setLoading] = useState(false);
+    const { searchProgress } = useSearchForm(); // Извлекаем прогресс из контекста
 
-    // return isSearching ? (
-    //     <LoadingProgress progress={searchProgress} isVisible={true} />
-    // ) : (
-    //     <main className="trains-page">
-    //         <div className="container">
-    //             <div className="trains-content">
-    //                 <Aside />
-    //                 <Tickets />
-    //             </div>
-    //         </div>
-    //     </main>
-    // );
+    if (loading) {
+        return (
+            <div>
+                <LoadingProgress progress={searchProgress} isVisible={true} />
+                <iframe src="../../assets/images/animationTrain.gif" frameborder="0"></iframe>
+            </div>
+        );
+    }
 
     return (
         <main className="trains-page">
             <div className="container">
                 <div className="trains-content">
                     <Aside />
-                    <Tickets />
+                    <Tickets loading={loading} setLoading={setLoading} />
                 </div>
             </div>
         </main>
-    )
+    );
 }

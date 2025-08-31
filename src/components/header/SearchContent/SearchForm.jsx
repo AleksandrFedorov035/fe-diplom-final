@@ -9,7 +9,7 @@ export default function SearchForm({ isTrainsPage = false }) {
 
     const [fromCityValue, setFromCityValue] = useState(searchData.fromCity);
     const [toCityValue, setToCityValue] = useState(searchData.toCity);
-    const [startDate, setStartDate] = useState(searchData.startDate);
+    const [startDate, setStartDate] = useState(searchData.startDate || new Date());
     const [endDate, setEndDate] = useState(searchData.endDate);
     const [showStartCalendar, setShowStartCalendar] = useState(false);
     const [showEndCalendar, setShowEndCalendar] = useState(false);
@@ -19,11 +19,21 @@ export default function SearchForm({ isTrainsPage = false }) {
     const startDateRef = useRef(null);
     const endDateRef = useRef(null);
 
-    // Синхронизируем локальное состояние с контекстом
+    // Устанавливаем сегодняшнюю дату по умолчанию, если она ещё не задана в контексте
+    useEffect(() => {
+        if (!searchData.startDate) {
+            const today = new Date();
+            setStartDate(today);
+            updateSearchData({ startDate: today });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchData.startDate]);
+
+    // Синхронизация локального состояния с контекстом
     useEffect(() => {
         setFromCityValue(searchData.fromCity);
         setToCityValue(searchData.toCity);
-        setStartDate(searchData.startDate);
+        setStartDate(searchData.startDate || startDate);
         setEndDate(searchData.endDate);
     }, [searchData]);
 
@@ -112,7 +122,7 @@ export default function SearchForm({ isTrainsPage = false }) {
 
     const [modal, setModal] = useState({ visible: false, type: 'error', title: '', text: '' });
     const showModal = (type, title, text) => setModal({ visible: true, type, title, text });
-    const hideModal = () => setModal((m)=>({ ...m, visible: false }));
+    const hideModal = () => setModal((m) => ({ ...m, visible: false }));
 
     const validate = () => {
         if (!fromCityValue || !toCityValue) {

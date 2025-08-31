@@ -88,3 +88,7 @@ main {
   border-radius: 4px;
   cursor: pointer;
 }
+
+ul {
+  list-style: none;
+}

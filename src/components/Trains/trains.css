@@ -557,6 +557,7 @@ aside {
 
 .tickets {
     width: 100%;
+    max-width: 1000px;
 }
 
 .results-header {
@@ -583,6 +584,54 @@ aside {
     align-items: center;
 }
 
+.sort-dropdown {
+    position: relative;
+}
+
+.sort-options {
+    background-color: #F7F5F9;
+    position: absolute;
+    top: -8px;
+    left: -7px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-options li {
+    border-bottom: 1px solid #E5E5E5;
+    padding: 8px 11px 10px 7px;
+    transition: .1s linear;
+    color: #000;
+}
+
+.sort-options li:hover {
+    background-color: #FFCA62;
+    color: #fff;
+}
+
+.sort-options li:last-child {
+    border-bottom: none;
+}
+
+.sort-options li,
+.sort-text {
+    cursor: pointer;
+}
+
+.activeTextSort {
+    color: #000;
+}
+
+.limit-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.limit-buttons li {
+    cursor: pointer;
+}
+
 .results-list {
     display: flex;
     flex-direction: column;
@@ -595,25 +644,25 @@ aside {
     background-color: #fff;
     border: 1px solid #c4c4c4;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
-    display: flex;
 }
 
-.route-header {
-    display: flex;
+.card {
+    width: 100%;
 }
 
-.route-time {
-    border-right: 1px dashed #E5E5E5;
+.card-inner {
     display: flex;
-    gap: 35px;
-    padding: 54px 36px 80px 40px;
-    min-width: 440px;
 }
 
 .train-info {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 18px 31px 26px;
+    gap: 10px;
     background-color: #E4E0E9;
-    padding: 58px 18px 92px 26px;
-    min-width: 153px;
+    width: 20.5%;
+    max-width: 197px;
+    box-sizing: border-box;
 }
 
 .train-img {
@@ -634,42 +683,251 @@ aside {
     font-weight: 400;
     color: #292929;
     text-transform: capitalize;
-}
-
-.travel-info {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
 }
 
-.travel-info div {
+.train-time {
+    border-right: 1px dashed #E5E5E5;
+    width: 50%;
+    display: flex;
+    gap: 40px;
+    padding: 54px 39px 31px;
+}
+
+.departure,
+.arrival,
+.inTrip {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.departure span:first-child,
+.arrival span:first-child {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.departure span:nth-child(2),
+.arrival span:nth-child(2) {
+    font-size: 18px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.departure span:nth-child(3),
+.arrival span:nth-child(3) {
+    font-size: 16px;
+    font-weight: 400;
+    color: #928F94;
+}
+
+.inTrip {
+    align-items: center;
+    gap: 7px;
+}
+
+.inTrip span {
     color: #c4c4c4;
     font-size: 18px;
     font-weight: 400;
 }
 
-.travel-info img {
+.inTrip img {
     width: 30px;
     height: 20px;
 }
 
-.time-train {
-    color: #000;
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 5px;
+.train-about {
+    width: 25.8%;
+    padding: 41px 22px 22px 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
 }
 
-.city-name-train {
-    font-size: 18px;
-    font-weight: 400;
-    text-transform: capitalize;
-
+.train-about>ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-.railway-station-name {
-    color: #928F94;
+.train-about>ul>li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.train-about>ul>li>span:first-child {
+    width: 80px;
+    color: #3E3C41;
     font-size: 16px;
     font-weight: 400;
 }
+
+.seats-menu {
+    position: relative;
+}
+
+.seats-info-count,
+.dropdown-seats-menu>li>span:nth-child(2) {
+    color: #FFA800;
+    font-weight: 500;
+}
+
+.seats-menu:hover .dropdown-seats-menu {
+    display: block;
+}
+
+.dropdown-seats-menu {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    z-index: 100;
+    background-color: #f5f4f6;
+    padding: 17px 17px 17px 32px;
+    width: 276px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+/* .dropdown-seats-menu::before {} */
+
+.dropdown-seats-menu>li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 19px;
+}
+
+.dropdown-seats-menu>li>span:nth-child(1) {
+    width: 70px;
+}
+
+.dropdown-seats-menu>li>div {
+    display: flex;
+    gap: 5px;
+}
+
+.price-info {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.price-info>span:first-child {
+    color: #928F94;
+}
+
+.price-info>span:nth-child(2),
+.dropdown-seats-menu>li>div>span:first-child {
+    color: #2D2B2F;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.price-info>span:nth-child(3),
+.dropdown-seats-menu>li>div>span:nth-child(2) {
+    color: #928F94;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.futures {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.futures>ul {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.futures>ul>li>img {
+    width: 20px;
+    height: 20px;
+}
+
+.futures>a {
+    text-align: center;
+    padding: 6px 19px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #FFA800;
+    max-width: 228px;
+    font-size: 24px;
+    font-weight: 700;
+
+    transition: box-shadow .1s linear;
+}
+
+.futures>a:hover {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* pagination */
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 100%;
+}
+
+.pagination-btn.prev svg {
+    rotate: 180deg;
+}
+
+.pagination-btn:hover {
+    border-color: #FFA800;
+    fill: #FFA800;
+    cursor: pointer;
+}
+
+.pagination-btn, .pagination-list li {
+    background-color: transparent;
+    width: 86px;
+    height: 75px;
+    border: 2px solid #c4c4c4;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    transition: .15s linear;
+
+
+    fill: #928F94;
+}
+
+.pagination-list {
+    display: flex;
+    gap: 35px;
+    margin: 0 35px;
+}
+
+.pagination-list li {
+    font-size: 30px;
+    font-weight: 700;
+    color: #928F94;
+}
+
+.page-item:not(.active):hover {
+    border-color: #FFA800;
+    color: #FFA800;
+    cursor: pointer;
+}
+
+.page-item.active {
+    background-color: #FFA800;
+    color: #fff;
+    border-color: #FFA800;
+}
+
