@@ -1,8 +1,14 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements, Outlet } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import TrainsPage from './pages/TrainsPage';
-import { SearchFormProvider } from './context/SearchFormContext';
+import "./App.css";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  createRoutesFromElements,
+  Outlet,
+} from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import TrainsPage from "./pages/TrainsPage";
+import { SearchFormProvider } from "./context/SearchFormContext";
 
 export default function App() {
   const routes = createBrowserRouter(
@@ -12,6 +18,7 @@ export default function App() {
         <Route path="/trains" element={<TrainsPage />} />
       </Route>
     ),
+    { basename: "/fe-diplom-final/" }
   );
 
   return (
