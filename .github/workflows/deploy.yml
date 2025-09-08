@@ -29,9 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: "yarn"
@@ -39,13 +39,20 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn run build
+        env:
+          APP_BASE_PATH: ${{ secrets.APP_BASE_PATH }}
+          APP_METRIKA_ID: ${{ secrets.APP_METRIKA_ID }}
+      - name: Install coi service worker
+        run: |
+          cp node_modules/coi-serviceworker/coi-serviceworker.min.js dist/
+          sed -i 's#\(<!-- coi -->\)#<script src="/coi-serviceworker.min.js"></script>#g' dist/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist repository
           path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
