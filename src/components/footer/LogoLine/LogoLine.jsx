@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL;
+
 export default function LogoLine() {
   return (
     <div className="logoLine">
@@ -5,7 +7,7 @@ export default function LogoLine() {
         <a href="/" className="logo-logoLine">
           Лого
         </a>
-        <img src="src\assets\images\footer-arrow.png" alt="arrow" />
+        <img src={base + "/footer-arrow.png"} alt="arrow" />
         <span>2018 WEB</span>
       </div>
     </div>
